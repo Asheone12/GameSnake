@@ -57,4 +57,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.0'
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+
+    //MMKV
+    implementation("com.tencent:mmkv:1.3.1")
 }

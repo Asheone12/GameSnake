@@ -14,7 +14,6 @@ import com.muen.gamesnake.domain.game.SnakeDirection
 import com.muen.gamesnake.presentation.activity.GameActivity
 import com.muen.gamesnake.presentation.component.AppBar
 import com.muen.gamesnake.presentation.component.Board
-import com.muen.gamesnake.presentation.component.Controller
 
 @Composable
 fun GameScreen(gameEngine: GameEngine, score: Int) {
@@ -27,15 +26,22 @@ fun GameScreen(gameEngine: GameEngine, score: Int) {
             modifier = Modifier.padding(contentPadding),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            state.value?.let { Board(it) }
-            Controller {
+            state.value?.let { Board(it){direct->
+                when (direct) {
+                    SnakeDirection.Up -> gameEngine.move = Pair(0, -1)
+                    SnakeDirection.Left -> gameEngine.move = Pair(-1, 0)
+                    SnakeDirection.Right -> gameEngine.move = Pair(1, 0)
+                    SnakeDirection.Down -> gameEngine.move = Pair(0, 1)
+                }
+            } }
+            /*Controller {
                 when (it) {
                     SnakeDirection.Up -> gameEngine.move = Pair(0, -1)
                     SnakeDirection.Left -> gameEngine.move = Pair(-1, 0)
                     SnakeDirection.Right -> gameEngine.move = Pair(1, 0)
                     SnakeDirection.Down -> gameEngine.move = Pair(0, 1)
                 }
-            }
+            }*/
         }
     }
 }
