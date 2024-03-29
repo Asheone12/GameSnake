@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.GameSnake" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:navigationBarColor">#8DA25A</item>
+        <item name="android:statusBarColor">#8DA25A</item>
+    </style>
+</resources>

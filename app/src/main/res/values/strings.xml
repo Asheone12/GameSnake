@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">贪吃蛇</string>
+    <string name="default_player_name">玩家</string>
+    <string name="about_game">一款贪吃蛇小游戏</string>
+    <string name="source_code">源代码</string>
+    <string name="title_about">关于</string>
+    <string name="game_over">你输了</string>
+    <string name="your_score">你的得分: %s</string>
+    <string name="try_again">再试一次</string>
+    <string name="high_score">排行榜</string>
+    <string name="player_name">玩家名字</string>
+    <string name="score">得分</string>
+    <string name="new_game">新游戏</string>
+    <string name="settings">设置</string>
+    <string name="about">关于</string>
+    <string name="title_settings">设置</string>
+    <string name="save">保存</string>
+    <string name="player_name_updated">修改玩家名字</string>
+</resources>
