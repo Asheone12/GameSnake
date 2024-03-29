@@ -1,3 +1,7 @@
 package com.muen.gamesnake.data.model
 
-data class HighScore(val playerName: String, val score: Int)
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class HighScore(val playerName: String, val score: Int): Parcelable
