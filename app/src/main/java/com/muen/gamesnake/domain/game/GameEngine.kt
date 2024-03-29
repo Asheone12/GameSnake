@@ -1,6 +1,6 @@
 package com.muen.gamesnake.domain.game
 
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import com.muen.gamesnake.data.model.State
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import java.util.*
+import java.util.Random
 
 class GameEngine(
     private val scope: CoroutineScope,
@@ -27,7 +27,7 @@ class GameEngine(
             )
         )
     val state: Flow<State> = mutableState
-    private val currentDirection = mutableStateOf(SnakeDirection.Right)
+    private val currentDirection = mutableIntStateOf(SnakeDirection.Right)
 
     var move = Pair(1, 0)
         set(value) {

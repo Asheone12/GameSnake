@@ -1,6 +1,5 @@
 package com.muen.gamesnake.presentation.screen
 
-import android.net.Uri
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -14,16 +13,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavHostController
 import com.muen.gamesnake.BuildConfig
-import com.muen.gamesnake.domain.base.REPO_URL
 import com.muen.gamesnake.presentation.component.AppBar
-import com.muen.gamesnake.presentation.component.AppButton
 import com.muen.gamesnake.presentation.component.BodyLarge
 import com.muen.gamesnake.presentation.component.DisplayLarge
 import com.muen.gamesnake.presentation.component.TitleLarge
 import com.muen.gamesnake.presentation.theme.border2dp
 import com.muen.gamesnake.presentation.theme.padding16dp
 import com.muen.gamesnake.presentation.theme.padding8dp
-import com.muen.gamesnake.presentation.theme.width248dp
 import com.muen.gamesnake.R
 
 @Composable
@@ -57,10 +53,6 @@ fun AboutScreen(navController: NavHostController) {
                 text = stringResource(R.string.about_game),
                 textAlign = TextAlign.Justify
             )
-/*            AppButton(
-                modifier = Modifier.width(width248dp),
-                text = stringResource(R.string.source_code)
-            ) { customTabsIntent.launchUrl(context, Uri.parse(REPO_URL)) }*/
         }
     }
 }
