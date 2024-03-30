@@ -3,6 +3,7 @@ package com.muen.gamesnake.presentation.activity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.res.stringResource
@@ -21,7 +22,7 @@ import kotlinx.coroutines.launch
 class GameActivity : BaseActivity() {
     private lateinit var dataStore: GameCache
     private val isPlaying = mutableStateOf(true)
-    private var score = mutableStateOf(0)
+    private var score = mutableIntStateOf(0)
     private lateinit var scope: CoroutineScope
     private lateinit var playerName: String
     private lateinit var highScores: List<HighScore>

@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.motionEventSpy
 import com.muen.gamesnake.MMKVManage
@@ -25,6 +27,7 @@ import kotlin.math.abs
 
 @Composable
 fun Board(state: State,onDirectionChange: (Int) -> Unit) {
+    val currentDirection = remember { mutableStateOf(SnakeDirection.Right) }
     BoxWithConstraints(Modifier.padding(padding16dp)) {
         val tileSize = maxWidth / GameEngine.BOARD_SIZE
         Box(
@@ -45,16 +48,30 @@ fun Board(state: State,onDirectionChange: (Int) -> Unit) {
                             if (abs(dx) > abs(dy)){
                                 //水平移动更多
                                 if(dx > 0){
-                                    onDirectionChange.invoke(SnakeDirection.Right)
+                                    if (currentDirection.value != SnakeDirection.Left) {
+                                        onDirectionChange.invoke(SnakeDirection.Right)
+                                        currentDirection.value = SnakeDirection.Right
+                                    }
                                 }else{
-                                    onDirectionChange.invoke(SnakeDirection.Left)
+                                    if (currentDirection.value != SnakeDirection.Right) {
+                                        onDirectionChange.invoke(SnakeDirection.Left)
+                                        currentDirection.value = SnakeDirection.Left
+                                    }
                                 }
                             }else if(abs(dx)< abs(dy)){
                                 //竖直移动更多
                                 if(dy > 0){
-                                    onDirectionChange.invoke(SnakeDirection.Down)
+                                    if (currentDirection.value != SnakeDirection.Up) {
+                                        onDirectionChange.invoke(SnakeDirection.Down)
+                                        currentDirection.value = SnakeDirection.Down
+                                    }
+
                                 }else{
-                                    onDirectionChange.invoke(SnakeDirection.Up)
+                                    if (currentDirection.value != SnakeDirection.Down) {
+                                        onDirectionChange.invoke(SnakeDirection.Up)
+                                        currentDirection.value = SnakeDirection.Up
+                                    }
+
                                 }
                             }
 

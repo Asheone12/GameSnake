@@ -97,8 +97,8 @@ class GameEngine(
 
                     it.copy(
                         food = if (newPosition == it.food) Pair(
-                            Random().nextInt(BOARD_SIZE),
-                            Random().nextInt(BOARD_SIZE)
+                            Random().nextInt(BOARD_SIZE - 1) + 1,
+                            Random().nextInt(BOARD_SIZE - 1) + 1
                         ) else it.food,
                         snake = listOf(newPosition) + it.snake.take(snakeLength - 1),
                         currentDirection = currentDirection.value,
