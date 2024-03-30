@@ -5,6 +5,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file("${rootDir.path}/signature.jks")
+            storePassword '123456'
+            keyAlias 'key0'
+            keyPassword '123456'
+        }
+    }
     namespace 'com.muen.gamesnake'
     compileSdk 34
 
@@ -12,8 +20,8 @@ android {
         applicationId "com.muen.gamesnake"
         minSdk 27
         targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        versionCode 10000
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -41,6 +49,13 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            def date = new Date().format("yyyyMMddHHmm")
+            outputFileName = "GameSnake_${variant.name}_v${variant.versionName}_${date}.apk"
+        }
     }
 }
 
