@@ -18,10 +18,10 @@ android {
 
     defaultConfig {
         applicationId "com.muen.gamesnake"
-        minSdk 27
+        minSdk 25
         targetSdk 34
-        versionCode 10000
-        versionName "1.0.0"
+        versionCode 10001
+        versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
