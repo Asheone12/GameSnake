@@ -5,6 +5,7 @@ import androidx.compose.ui.unit.dp
 val padding8dp = 8.dp
 val padding16dp = 16.dp
 val padding24dp = 24.dp
+val padding48dp = 48.dp
 val padding64dp = 64.dp
 val width248dp = 248.dp
 val border2dp = 2.dp

@@ -14,6 +14,7 @@ import com.muen.gamesnake.domain.game.SnakeDirection
 import com.muen.gamesnake.presentation.activity.GameActivity
 import com.muen.gamesnake.presentation.component.AppBar
 import com.muen.gamesnake.presentation.component.Board
+import com.muen.gamesnake.presentation.theme.padding48dp
 
 @Composable
 fun GameScreen(gameEngine: GameEngine, score: Int) {
@@ -23,7 +24,7 @@ fun GameScreen(gameEngine: GameEngine, score: Int) {
         title = stringResource(id = R.string.your_score, score),
         onBackClicked = { activity.finish() }) { contentPadding ->
         Column(
-            modifier = Modifier.padding(contentPadding),
+            modifier = Modifier.padding(top = padding48dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             state.value?.let { Board(it){direct->
