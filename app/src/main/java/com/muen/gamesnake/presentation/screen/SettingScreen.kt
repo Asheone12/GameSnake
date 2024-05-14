@@ -46,8 +46,8 @@ fun SettingScreen(navController: NavHostController) {
                     start = padding16dp,
                     end = padding16dp
                 )
-                .border(width = border2dp, color = MaterialTheme.colorScheme.onBackground),
-            horizontalAlignment = Alignment.CenterHorizontally,
+                //.border(width = border2dp, color = MaterialTheme.colorScheme.onBackground),
+            ,horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             DisplayLarge(
                 modifier = Modifier.padding(

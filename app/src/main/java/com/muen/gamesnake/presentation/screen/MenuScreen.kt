@@ -1,24 +1,25 @@
 package com.muen.gamesnake.presentation.screen
 
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import com.muen.gamesnake.R
 import com.muen.gamesnake.domain.extension.launchActivity
 import com.muen.gamesnake.domain.navigation.Screen
 import com.muen.gamesnake.presentation.activity.GameActivity
 import com.muen.gamesnake.presentation.component.AppButton
 import com.muen.gamesnake.presentation.component.DisplayLarge
-import com.muen.gamesnake.presentation.theme.border2dp
 import com.muen.gamesnake.presentation.theme.padding16dp
 import com.muen.gamesnake.presentation.theme.padding64dp
 import com.muen.gamesnake.presentation.theme.width248dp
-import com.muen.gamesnake.R
 
 @Composable
 fun MenuScreen(navController: NavHostController) {
@@ -26,8 +27,8 @@ fun MenuScreen(navController: NavHostController) {
         modifier = Modifier
             .fillMaxSize()
             .padding(padding16dp)
-            .border(width = border2dp, color = MaterialTheme.colorScheme.onBackground),
-        horizontalAlignment = Alignment.CenterHorizontally,
+            //.border(width = border2dp, color = MaterialTheme.colorScheme.onBackground),
+        ,horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         val context = LocalContext.current

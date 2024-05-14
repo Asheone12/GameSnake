@@ -1,10 +1,12 @@
 package com.muen.gamesnake.presentation.screen
 
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -12,15 +14,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavHostController
+import com.muen.gamesnake.R
 import com.muen.gamesnake.data.cache.GameCache
 import com.muen.gamesnake.data.model.HighScore
 import com.muen.gamesnake.domain.base.TOP_10
 import com.muen.gamesnake.presentation.component.AppBar
 import com.muen.gamesnake.presentation.component.TitleLarge
-import com.muen.gamesnake.presentation.theme.border2dp
 import com.muen.gamesnake.presentation.theme.padding16dp
 import com.muen.gamesnake.presentation.theme.padding8dp
-import com.muen.gamesnake.R
 
 @Composable
 fun HighScoreScreen(navController: NavHostController) {
@@ -40,7 +41,7 @@ fun HighScoreScreen(navController: NavHostController) {
                     start = padding16dp,
                     end = padding16dp
                 )
-                .border(width = border2dp, color = MaterialTheme.colorScheme.onBackground),
+               // .border(width = border2dp, color = MaterialTheme.colorScheme.onBackground),
         ) {
             Row(
                 Modifier

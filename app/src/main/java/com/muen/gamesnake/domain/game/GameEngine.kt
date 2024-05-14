@@ -109,6 +109,6 @@ class GameEngine(
     }
 
     companion object {
-        const val BOARD_SIZE = 32   //游戏界面总格数
+        const val BOARD_SIZE = 24   //游戏界面总格数
     }
 }

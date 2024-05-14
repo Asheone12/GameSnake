@@ -1,9 +1,10 @@
 package com.muen.gamesnake.presentation.screen
 
 import androidx.browser.customtabs.CustomTabsIntent
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -13,14 +14,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavHostController
 import com.muen.gamesnake.BuildConfig
+import com.muen.gamesnake.R
 import com.muen.gamesnake.presentation.component.AppBar
 import com.muen.gamesnake.presentation.component.BodyLarge
 import com.muen.gamesnake.presentation.component.DisplayLarge
 import com.muen.gamesnake.presentation.component.TitleLarge
-import com.muen.gamesnake.presentation.theme.border2dp
 import com.muen.gamesnake.presentation.theme.padding16dp
 import com.muen.gamesnake.presentation.theme.padding8dp
-import com.muen.gamesnake.R
 
 @Composable
 fun AboutScreen(navController: NavHostController) {
@@ -39,8 +39,8 @@ fun AboutScreen(navController: NavHostController) {
                     start = padding16dp,
                     end = padding16dp
                 )
-                .border(width = border2dp, color = MaterialTheme.colorScheme.onBackground),
-            horizontalAlignment = Alignment.CenterHorizontally,
+                //.border(width = border2dp, color = MaterialTheme.colorScheme.onBackground),
+            ,horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             DisplayLarge(text = stringResource(id = R.string.app_name))
