@@ -2,14 +2,11 @@ package com.muen.gamesnake.presentation.activity
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.lifecycleScope
-import com.muen.gamesnake.R
-import com.muen.gamesnake.data.cache.GameCache
+import com.muen.gamesnake.MMKVManage
 import com.muen.gamesnake.data.model.HighScore
 import com.muen.gamesnake.domain.base.BaseActivity
 import com.muen.gamesnake.domain.base.TOP_10
@@ -17,34 +14,51 @@ import com.muen.gamesnake.domain.game.GameEngine
 import com.muen.gamesnake.presentation.screen.EndScreen
 import com.muen.gamesnake.presentation.screen.GameScreen
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 class GameActivity : BaseActivity() {
-    private lateinit var dataStore: GameCache
     private val isPlaying = mutableStateOf(true)
     private var score = mutableIntStateOf(0)
     private lateinit var scope: CoroutineScope
-    private lateinit var playerName: String
-    private lateinit var highScores: List<HighScore>
+    private lateinit var mPlayerName: String
+    private lateinit var mHighScores: List<HighScore>
     private var gameEngine = GameEngine(
         scope = lifecycleScope,
         onGameEnded = {
             if (isPlaying.value) {
                 isPlaying.value = false
-                scope.launch { dataStore.saveHighScore(highScores) }
+                var flag = false
+                for (highScore in mHighScores) {
+                    if (highScore.playerName == mPlayerName) {
+                        if (score.value > highScore.score) {
+                            highScore.score = score.value
+                        }
+                        flag = true
+                        break
+                    }
+                }
+                val tempList = mutableListOf<HighScore>()
+                tempList.addAll(mHighScores)
+                if (!flag) {
+                    tempList.add(HighScore(mPlayerName, score.value))
+                }
+                tempList.sortByDescending{ highScore -> highScore.score }
+                val newList = tempList.take(TOP_10)
+                MMKVManage.highScores = newList
             }
         },
         onFoodEaten = { score.value++ }
     )
 
+    override fun onBackPressed() {
+        //屏蔽右滑返回
+        return
+    }
+
     @Composable
     override fun Content() {
         scope = rememberCoroutineScope()
-        dataStore = GameCache(applicationContext)
-        playerName = dataStore.getPlayerName.collectAsState(initial = stringResource(id = R.string.default_player_name)).value
-        highScores = dataStore.getHighScores.collectAsState(initial = listOf()).value.plus(
-            HighScore(playerName, score.value)
-        ).sortedByDescending { it.score }.take(TOP_10)
+        mPlayerName = MMKVManage.playerName
+        mHighScores = MMKVManage.highScores
         Column {
             if (isPlaying.value) {
                 GameScreen(gameEngine, score.value)

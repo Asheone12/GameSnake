@@ -2,11 +2,21 @@ package com.muen.gamesnake.presentation.screen
 
 import android.widget.Toast
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -16,8 +26,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavHostController
+import com.muen.gamesnake.MMKVManage
 import com.muen.gamesnake.R
-import com.muen.gamesnake.data.cache.GameCache
 import com.muen.gamesnake.presentation.component.AppBar
 import com.muen.gamesnake.presentation.component.AppButton
 import com.muen.gamesnake.presentation.component.DisplayLarge
@@ -29,7 +39,6 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun SettingScreen(navController: NavHostController) {
-    val dataStore = GameCache(LocalContext.current)
     var text by remember { mutableStateOf(TextFieldValue("")) }
     val scope = rememberCoroutineScope()
     val focusRequester = remember { FocusRequester() }
@@ -83,7 +92,7 @@ fun SettingScreen(navController: NavHostController) {
                     .padding(padding16dp)
             ) {
                 scope.launch {
-                    dataStore.savePlayerName(text.text.trim())
+                    MMKVManage.playerName = text.text.trim()
                     Toast.makeText(context, R.string.player_name_updated, Toast.LENGTH_SHORT).show()
                     navController.popBackStack()
                 }

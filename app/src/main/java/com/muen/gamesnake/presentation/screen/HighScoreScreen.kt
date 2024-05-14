@@ -8,16 +8,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavHostController
+import com.muen.gamesnake.MMKVManage
 import com.muen.gamesnake.R
-import com.muen.gamesnake.data.cache.GameCache
 import com.muen.gamesnake.data.model.HighScore
-import com.muen.gamesnake.domain.base.TOP_10
 import com.muen.gamesnake.presentation.component.AppBar
 import com.muen.gamesnake.presentation.component.TitleLarge
 import com.muen.gamesnake.presentation.theme.padding16dp
@@ -25,10 +22,7 @@ import com.muen.gamesnake.presentation.theme.padding8dp
 
 @Composable
 fun HighScoreScreen(navController: NavHostController) {
-    val dataStore = GameCache(LocalContext.current)
-    val highScores =
-        dataStore.getHighScores.collectAsState(initial = listOf()).value.sortedByDescending { it.score }
-            .take(TOP_10)
+    val highScores = MMKVManage.highScores
     AppBar(
         title = stringResource(R.string.high_score),
         onBackClicked = { navController.popBackStack() }) { contentPadding ->
